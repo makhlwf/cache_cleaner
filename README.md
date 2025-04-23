@@ -2,6 +2,7 @@
 A very simple cash cleaner script to clean some cash and leftover files that it's not important at all and just taking a system space
 
 ###TO USE
+
 open powershell and Paste this command
 
 ```
