@@ -40,7 +40,7 @@ Launch CacheCleaner by opening **PowerShell as Administrator** and running the c
 
 ```powershell
 Start-Process powershell -ArgumentList "Set-ExecutionPolicy RemoteSigned -Scope Process -Force; Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/makhlwf/cache_cleaner/refs/heads/main/cache_cleaner_by_makhlwf.ps1' -OutFile 'cache_cleaner.ps1'; .\cache_cleaner.ps1" -Verb RunAs
-
+```
 This will:
 
 1. Temporarily allow scripts in your session
