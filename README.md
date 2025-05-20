@@ -16,7 +16,19 @@ CacheCleaner helps you free up space by cleaning out unnecessary temp files, log
   - Leftover `.log`, `.bak`, `.old` files
 
 - **Application Cleaners**:
-  - Discord, Steam, Adobe, Epic Games, Spotify, Teams, Zoom, Slack, Telegram, Roblox, Riot Games, and more
+  - Discord
+  - Spotify
+  - Epic Games Launcher
+  - Battle.net
+  - Steam
+  - Adobe (Common Media Cache, Premiere Pro)
+  - Microsoft Teams
+  - Slack
+  - WhatsApp
+  - Zoom
+  - Telegram Desktop
+  - Roblox
+  - Riot Games Client
 
 - **Browser Cache Cleaners**:
   - Google Chrome
@@ -29,6 +41,18 @@ CacheCleaner helps you free up space by cleaning out unnecessary temp files, log
   - Select/Deselect All buttons
   - Progress bar with feedback
   - Simple and modern Windows Forms UI
+
+---
+
+## Planned Enhancements
+
+We aim to continuously improve CacheCleaner. Some features planned for future releases include:
+
+- Cleaning for VLC Media Player cache
+- Cleaning for Windows Update cache
+- Option to flush DNS cache
+
+*Note: We've encountered some technical difficulties with our current toolset for modifying the PowerShell script, which has temporarily delayed the implementation of these features. We're working on resolving these issues.*
 
 ---
 
@@ -45,6 +69,12 @@ This will:
 1. Temporarily allow scripts in your session  
 2. Download the latest version of the script  
 3. Launch CacheCleaner with admin rights
+
+---
+
+## Screenshots
+
+*(Coming soon! We'll add some screenshots of CacheCleaner in action.)*
 
 ---
 
@@ -66,6 +96,19 @@ This will:
 ## Disclaimer
 
 > This tool is provided as-is with no guarantees. While CacheCleaner is designed to safely clean common temp/cache files, please review the script before use and run at your own risk.
+
+---
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements, new features, or bug fixes, please feel free to:
+
+1.  Fork the repository.
+2.  Create a new branch for your changes.
+3.  Make your changes and test them.
+4.  Submit a pull request with a clear description of your contributions.
+
+Alternatively, you can also open an issue to discuss your ideas.
 
 ---
 
