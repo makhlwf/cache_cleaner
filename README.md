@@ -1,99 +1,126 @@
-<h1>CacheCleaner</h1>
+# CacheCleaner
 
-<p><em>A sleek, no-nonsense system cleaning tool for Windows.</em></p>
+**A sleek, no-nonsense system cleaning tool for Windows.**  
+
+<p align="center">
+  <a href="#features">Features</a> |
+  <a href="#how-to-use">How to Use</a> |
+  <a href="#download">Download</a> |
+  <a href="#requirements">Requirements</a> |
+  <a href="#contributing">Contributing</a> |
+  <a href="#license">License</a>
+</p>
+
 CacheCleaner helps you free up space by cleaning out unnecessary temp files, logs, and app/browser caches — all from a simple, user-friendly interface.
 
----
+## How It Works
 
-<details>
-  <summary><h2>Features</h2></summary>
+CacheCleaner is a PowerShell script that leverages Windows Forms to provide a simple and lightweight graphical user interface (GUI). This means you get the power of a script with the ease of use of a visual tool, without needing to install a heavy application.
 
-  <strong>System Cleaners:</strong>
-  <ul>
-    <li>System Temp files</li>
-    <li>User Temp files</li>
-    <li>Prefetch data</li>
-    <li>System logs & error reports</li>
-    <li>Thumbnail cache</li>
-    <li>Leftover <code>.log</code>, <code>.bak</code>, <code>.old</code> files</li>
-  </ul>
+The script dynamically builds its interface when launched, organizing cleaning options into clear categories like "System Cleaners," "Application Cleaners," and "Browser Cache Cleaners."
 
-  <strong>Application Cleaners:</strong>
-  <ul>
-    <li>Discord, Steam, Adobe, Epic Games, Spotify, Teams, Zoom, Slack, Telegram, Roblox, Riot Games, and more</li>
-  </ul>
+When you select items and click "Start Cleaning," CacheCleaner goes to work:
 
-  <strong>Browser Cache Cleaners:</strong>
-  <ul>
-    <li>Google Chrome</li>
-    <li>Microsoft Edge</li>
-    <li>Mozilla Firefox</li>
-    <li>Brave</li>
-    <li>Opera GX</li>
-  </ul>
+*   It iterates through each of your chosen cleaning tasks.
+*   For each task, it targets specific, predefined paths known for accumulating temporary files, cache data, or logs.
+*   The core cleaning is handled by a function (internally named `Clean-Folder`) that first calculates the size of the data in a target folder, then attempts to delete its contents using `Remove-Item -Recurse -Force`. This function is designed to suppress errors during deletion (using `-ErrorAction SilentlyContinue`) to ensure the script runs smoothly even if some files are in use or already deleted.
+*   Specific application caches are targeted by looking for common paths, including those for apps like Discord, Steam, Spotify, Adobe products, Microsoft Teams, and others.
+*   For general leftover files (like `.log`, `.bak`, `.old`), the script searches within common program installation directories such as `C:\ProgramData`, `C:\Program Files`, and `C:\Program Files (x86)`.
 
-  <strong>Other Perks:</strong>
-  <ul>
-    <li>Select/Deselect All buttons</li>
-    <li>Progress bar with feedback</li>
-    <li>Simple and modern Windows Forms UI</li>
-  </ul>
-</details>
+Throughout the process, a progress bar updates to show what's happening. Once finished, a message box appears, summarizing the total amount of disk space freed.
 
 ---
 
-<details>
-  <summary><h2>How to Use</h2></summary>
+## Features
 
-Launch CacheCleaner by opening <strong>PowerShell as Administrator</strong> and running the command below:
+- **System Cleaners**:
+  - System Temp files
+  - User Temp files
+  - Prefetch data
+  - System logs & error reports
+  - Thumbnail cache
+  - Leftover `.log`, `.bak`, `.old` files
 
-<pre><code class="language-powershell">
+- **Application Cleaners**:
+  - Discord, Steam, Adobe, Epic Games, Spotify, Teams, Zoom, Slack, Telegram, Roblox, Riot Games, and more
+
+- **Browser Cache Cleaners**:
+  - Google Chrome
+  - Microsoft Edge
+  - Mozilla Firefox
+  - Brave
+  - Opera GX
+
+- **Other Perks**:
+  - Select/Deselect All buttons
+  - Progress bar with feedback
+  - Simple and modern Windows Forms UI
+
+---
+
+## How to Use
+
+Launch CacheCleaner by opening **PowerShell as Administrator** and running the command below:
+
+```powershell
 Start-Process powershell -ArgumentList "Set-ExecutionPolicy RemoteSigned -Scope Process -Force; Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/makhlwf/cache_cleaner/refs/heads/main/cache_cleaner_by_makhlwf.ps1' -OutFile 'cache_cleaner.ps1'; .\cache_cleaner.ps1" -Verb RunAs
-</code></pre>
+```
 
 This will:
 
-  <ol>
-    <li>Temporarily allow scripts in your session</li>
-    <li>Download the latest version of the script</li>
-    <li>Launch CacheCleaner with admin rights</li>
-  </ol>
+1. Temporarily allow scripts in your session  
+2. Download the latest version of the script  
+3. Launch CacheCleaner with admin rights
 
 ---
 
-<details>
-  <summary><h2>Download</h2></summary>
+## Download
 
-- [<strong>Download Latest Release</strong>](https://github.com/makhlwf/cache_cleaner/releases/latest)  
-- [<strong>Browse All Releases</strong>](https://github.com/makhlwf/cache_cleaner/releases)
-</details>
+- [**Download Latest Release**](https://github.com/makhlwf/cache_cleaner/releases/latest)  
+- [**Browse All Releases**](https://github.com/makhlwf/cache_cleaner/releases)
 
 ---
 
-<details>
-  <summary><h2>Requirements</h2></summary>
+## Requirements
 
 - Windows OS  
 - PowerShell 5.1 or newer  
 - Administrator permissions  
-</details>
 
 ---
 
-<details>
-  <summary><h2>Disclaimer</h2></summary>
+## Disclaimer
 
 > This tool is provided as-is with no guarantees. While CacheCleaner is designed to safely clean common temp/cache files, please review the script before use and run at your own risk.
-</details>
 
 ---
 
-<details>
-  <summary><h2>License</h2></summary>
+## Contributing
+
+Contributions are welcome! If you have ideas for improvements or find any issues, please feel free to open an issue or submit a pull request.
+When creating an issue, please check if one of our issue templates (e.g., for bug reports or feature requests) fits your purpose.
+
+### How to Contribute
+
+*   Fork the repository.
+*   Create a new branch for your feature or bug fix.
+*   Make your changes.
+*   Ensure your code is clear and well-commented, especially if adding new cleaning paths or logic.
+*   Test your changes thoroughly.
+*   Submit a pull request with a clear description of your changes.
+
+### Examples of Contributions
+
+*   **Suggest new application cache paths:** If you know of other applications or common software that leaves behind cache files not currently covered, you can suggest their paths. This would typically involve adding new entries to the `$folders` array within the `Clean-AppCaches` function or adding new cases to the main `switch` statement for specific browser/app categories.
+*   **Optimize existing cleaning functions:** If you see opportunities to make any of the existing cleaning functions (like `Clean-Folder` or the logic for finding leftover files) more efficient or robust, such suggestions are welcome.
+*   **Improve UI elements:** While the UI is simple, suggestions for minor improvements to the Windows Forms elements that don't drastically change the tool's lightweight nature could be considered.
+
+---
+
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
-</details>
 
 ---
 
-<p style="text-align: center;"><em>Made with care by </em><a href="https://github.com/makhlwf">@makhlwf</a></p>
+Made with care by [@makhlwf](https://github.com/makhlwf)
