@@ -119,7 +119,53 @@ $startButton.Add_Click({
             "$env:APPDATA\Telegram Desktop\tdata\user_data",
             "$env:LOCALAPPDATA\Roblox\logs",
             "$env:LOCALAPPDATA\Roblox\versions\*\*.tmp",
-            "$env:LOCALAPPDATA\Riot Games\Riot Client\Cache"
+            "$env:LOCALAPPDATA\Riot Games\Riot Client\Cache",
+
+            # GOG Galaxy
+            "$env:LOCALAPPDATA\GOG.com\Galaxy\cache",
+            "$env:PROGRAMDATA\GOG.com\Galaxy\cache",
+
+            # Origin/EA App
+            "$env:LOCALAPPDATA\Origin\cache",
+            "$env:APPDATA\Origin\cache",
+            "$env:LOCALAPPDATA\Electronic Arts\EA Desktop\cache",
+            "$env:APPDATA\Electronic Arts\EA Desktop\cache",
+
+            # Visual Studio Code
+            "$env:APPDATA\Code\Cache",
+            "$env:APPDATA\Code\CachedData",
+            "$env:APPDATA\Code\User\workspaceStorage", # Workspace specific cache
+
+            # IntelliJ IDEA (using wildcard for version)
+            "$env:LOCALAPPDATA\JetBrains\IdeaIC*\caches",
+            "$env:LOCALAPPDATA\JetBrains\IntelliJIdea*\caches",
+
+            # Android Studio (using wildcard for version)
+            "$env:LOCALAPPDATA\Google\AndroidStudio*\caches",
+            "$env:USERPROFILE\.android\cache", # Android SDK cache
+
+            # Skype (Desktop)
+            "$env:APPDATA\Microsoft\Skype for Desktop\Cache",
+            "$env:APPDATA\Microsoft\Skype for Desktop\IndexedDB", # Skype IndexedDB
+
+            # OBS Studio
+            "$env:APPDATA\obs-studio\cache",
+            "$env:APPDATA\obs-studio\logs", # OBS logs can also be cleared
+
+            # VLC Media Player
+            "$env:APPDATA\vlc\cache",
+            "$env:LOCALAPPDATA\vlc", # VLC font cache and other temp files
+
+            # Microsoft Office (File Cache - be cautious, affects MRU lists)
+            "$env:LOCALAPPDATA\Microsoft\Office\16.0\OfficeFileCache", # For Office 2016/365
+            "$env:LOCALAPPDATA\Microsoft\Office\15.0\OfficeFileCache", # For Office 2013
+            "$env:LOCALAPPDATA\Microsoft\Office\OTele", # Office Telemetry data
+
+            # Other popular software
+            "$env:LOCALAPPDATA\NVIDIA\GLCache", # NVIDIA OpenGL Cache
+            "$env:LOCALAPPDATA\AMD\DxCache", # AMD DirectX Cache
+            "$env:LOCALAPPDATA\Temp\AMD", # AMD Installer Temp Files (often leftovers)
+            "$env:LOCALAPPDATA\Temp\NVIDIA Corporation" # NVIDIA Installer Temp Files (often leftovers)
         )
         foreach ($f in $folders) {
             $totalFreed += Clean-Folder $f
@@ -140,7 +186,7 @@ $startButton.Add_Click({
                 "LeftoverFiles" {
                     $folders = "C:\ProgramData","C:\Program Files","C:\Program Files (x86)"
                     foreach ($folder in $folders) {
-                        Get-ChildItem $folder -Recurse -Include *.log,*.bak,*.old -ErrorAction SilentlyContinue | ForEach-Object {
+                        Get-ChildItem $folder -Recurse -File -Include *.log,*.bak,*.old -ErrorAction SilentlyContinue | ForEach-Object {
                             $totalFreed += $_.Length / 1MB
                             Remove-Item $_.FullName -Force -ErrorAction SilentlyContinue
                         }
